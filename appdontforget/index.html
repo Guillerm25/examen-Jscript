@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./src/dom-drag.js"></script>
+
+    <title>Dont Forget it</title>
+  </head>
+  <body>
+    <!-- Fondo Pizarra de corcho -->
+    <div class="pizarra text-center">
+      <img src="./styles/img/logotodo.jpg" style="width: 350px" alt="" />
+
+      <!--  Div flotante para poder mover el "task por toda la pantalla" -->
+
+      <div id="root" style="left: 773px; top: 202px">
+        <div id="handle" class="h2 text-center">
+          <img src="./styles/img/logotodo.jpg" style="width: 200px" alt="" />
+        </div>
+        <form id="formTask" class="mx-2">
+          <div class="form-group">
+            <input
+              class="h4 mt-2"
+              type="text"
+              id="title"
+              placeholder=" ¿Qué tengo que hacer?"
+              class="form-control"
+              required
+            />
+          </div>
+          <select id="prioridad" type="check" class="form-select mt-2" required>
+            <option value="">Selecciona la importancia...</option>
+            <option value="impor">Urgente</option>
+            <option value="inter">Intermedia</option>
+            <option value="norm">Normal</option>
+          </select>
+          <div class="form-group mt-2">
+            <textarea
+              id="description"
+              cols="10"
+              rows="3"
+              placeholder="¡Explícate!"
+              class="form-control"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn-lg btn-primary btn-block text-center mx-4 my-3"
+          >
+            ¡Pínchalo!
+            <img
+              class="my2"
+              src="./styles/img/pushpin-147918_960_720.png"
+              width="15%"
+              alt=""
+            />
+          </button>
+        </form>
+      </div>
+
+      <!-- Es este apartado vamos a colocar las opciones de filtrado -->
+
+      <div class="mx-5 my-2 px-5">
+        <input
+          type="text"
+          id="buscador"
+          class="form-control container my-2"
+          onkeyup="buscar()"
+          placeholder="Encuentra tu Post-it"
+        />
+        <button onclick="todo()" class="btn btn-light h3">Mostrar todo</button>
+        <button onclick="importante()" class="btn btn-danger h3">
+          Importante
+        </button>
+        <button onclick="intermedio()" class="btn btn-warning h3">
+          Intermedio
+        </button>
+        <button onclick="normal()" class="btn btn-success h3">Normal</button>
+        <button onclick="clearAll()" class="btn btn-primary h3">Limpiar</button>
+        
+        <!-- Dentro de este Div iran saliendo los resultados de nuestras "tasks" -->
+       
+          <div id="tasks" class="row mt-3">
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LLamamiento a JavaScript -->
+    
+    <script language="javascript">
+      var theHandle = document.getElementById("handle");
+      var theRoot = document.getElementById("root");
+      Drag.init(theHandle, theRoot);
+    </script>
+
+    <script src="./src/dontforgetit.js"></script>
+    <script src="./src/filtrar.js"></script>
+    <script src="./src/buscador.js"></script>
+
+  </body>
+</html>
